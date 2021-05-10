@@ -1,0 +1,4 @@
+sudo rfcomm bind rfcomm0 24:42:16:08:00:00
+screen /dev/rfcoiot
+sudo nano /etc/rc.local
+sudo apt install python3-smbus
