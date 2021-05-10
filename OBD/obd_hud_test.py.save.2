@@ -1,0 +1,57 @@
+import obd
+
+import pygame
+from pygame.locals import*
+
+pygame.init()
+
+connection =obd.Async(fast=False)
+
+screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
+screen_w = screen.get_width()
+screen_h = screen.get_height()
+
+circle_y = screeen_h/2
+circle1_x = screen_w* 0.25
+circle2_x = screen_w* 0.50
+circle3_x = screen_w* 0.75
+circle_rad = (circle2_x - circle1_x)/2
+
+
+speed_text_x = screen_w* .25
+speed_text_y = screen_h* .25
+rpm_text_x = screen_w* .50
+rpm_text_y = screen_h* .25
+load_text_x = screen_w* .75
+load_text_y = screen_h* .25
+
+headerFont = pygame.font.SysFont("Arial",50)
+digitFont = pygame.font.SysFont("Arial",50)
+
+white = (255,255,255)
+black = (0,0,0)
+grey = (112,128,144)
+
+speed = 0
+rpm =0
+load =0
+
+def draw_hud():
+	screen.fill(grey)
+	pygame.draw.circle(screen,black, (int(circle1_x),int(circle_y)), int(circle_rad), 5)
+	pygame.draw.circle(screen,black, (int(circle2_x),int(circle_y)), int(circle_rad), 5)
+	pygame.draw.circle(screen,black, (int(circle3_x),int(circle_y)), int(circle_rad), 5)
+
+	speed_text = headerFont.render("SPEED",True, black)
+	rpm_text = headerFont.render("RPM",True,black)
+load_text = 
+
+
+c= obd.commands.RPM
+
+response = connection.query(c)
+print(repsonse.value)
+
+connection.close()
+
+
